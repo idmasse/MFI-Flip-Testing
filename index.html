@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MFI Medical · Product Search Testing</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --purple:#620DEC; --purple-light:#813DEF; --lime:#BAFF29; --tangerine:#FE4A49; --teal:#1CCAD8;
+    --dark:#2D2D2D; --white:#FFFFFF; --gray-light:#F7F7F7; --gray-mid:#E8E8E8;
+    --mfi:#0457c8; --mfi-dark:#023d8f;
+  }
+  body{ font-family:'Open Sans','Helvetica Neue',Arial,sans-serif; background:var(--gray-light); color:var(--dark); }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 0 60px; }
+
+  /* HEADER */
+  .header{ background:var(--dark); padding:34px 44px 40px; position:relative; overflow:hidden; }
+  .header-blob{ position:absolute; bottom:-40px; right:-40px; width:200px; height:200px; background:var(--lime); opacity:.15; border-radius:60% 40% 70% 30% / 50% 60% 40% 50%; }
+  .header-blob2{ position:absolute; top:-30px; right:150px; width:120px; height:120px; background:var(--teal); opacity:.12; border-radius:40% 60% 50% 50% / 60% 40% 50% 50%; }
+  .cobrand{ display:flex; align-items:center; gap:16px; margin-bottom:22px; position:relative; z-index:1; }
+  .flip-wordmark{ font-family:'Arial Black',Impact,sans-serif; font-weight:900; font-size:22px; letter-spacing:.04em; text-transform:uppercase; color:var(--white); }
+  .flip-wordmark span{ color:var(--lime); }
+  .cobrand .x{ color:rgba(255,255,255,.4); font-size:18px; font-weight:700; }
+  .mfi-lockup{ display:flex; align-items:center; gap:9px; background:var(--white); padding:7px 14px 7px 10px; border-radius:8px; }
+  .mfi-lockup img{ width:26px; height:26px; border-radius:5px; display:block; }
+  .mfi-lockup .mfi-name{ font-weight:800; font-size:16px; letter-spacing:-.01em; }
+  .mfi-lockup .mfi-name b{ color:var(--mfi); }
+  .mfi-lockup .mfi-name span{ color:var(--dark); }
+  .eyebrow{ font-family:'Arial Black',Impact,sans-serif; font-weight:900; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--lime); margin-bottom:12px; display:block; position:relative; z-index:1; }
+  .header h1{ font-family:'Arial Black',Impact,sans-serif; font-weight:900; font-size:32px; letter-spacing:.01em; text-transform:uppercase; color:var(--white); line-height:1.1; position:relative; z-index:1; }
+  .header h1 span{ color:var(--lime); }
+  .header-sub{ margin-top:12px; font-size:15px; color:rgba(255,255,255,.72); max-width:640px; line-height:1.6; position:relative; z-index:1; }
+
+  /* BODY */
+  .body-wrap{ padding:0 44px; }
+  .panel{ background:var(--white); border:1px solid var(--gray-mid); border-radius:14px; padding:26px 30px; margin-top:26px; }
+  .panel h2{ font-family:'Arial Black',Impact,sans-serif; font-weight:900; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--purple); margin-bottom:6px; }
+
+  .live-note{ background:#F0FFD4; border:1px solid #cdee8a; border-radius:10px; padding:10px 14px; font-size:12.5px; color:#4a7a00; font-weight:600; margin-bottom:18px; }
+
+  .controls-row{ display:flex; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+  #nextCallBtn{ padding:9px 18px; border:none; border-radius:8px; font-size:13px; font-weight:700; background:var(--purple); color:#fff; cursor:pointer; font-family:inherit; letter-spacing:.02em; }
+  #nextCallBtn:hover{ background:var(--purple-light); }
+  #nextCallBtn:disabled{ background:#c7b8e8; cursor:not-allowed; }
+  .call-counter{ font-size:12px; color:#777; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+
+  .example{ border:1.5px solid var(--gray-mid); border-radius:12px; padding:18px 20px; position:relative; overflow:hidden; }
+  .example::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--mfi); }
+  .call-title{ font-weight:800; font-size:14px; color:var(--dark); margin:2px 0 14px; }
+  .bubble{ max-width:82%; padding:9px 13px; border-radius:12px; font-size:13.5px; line-height:1.5; margin:5px 0; }
+  .bubble.bot{ background:var(--gray-light); border:1px solid var(--gray-mid); border-bottom-left-radius:2px; }
+  .bubble.user{ background:var(--mfi); color:#fff; margin-left:auto; border-bottom-right-radius:2px; }
+  .ts{ font-size:10px; color:#9a9a9a; margin:6px 0 1px; }
+
+  /* FOOTER */
+  .footer{ margin-top:40px; padding:24px 44px; background:var(--dark); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-radius:0; }
+  .footer-logo{ font-family:'Arial Black',Impact,sans-serif; font-weight:900; font-size:20px; text-transform:uppercase; color:var(--white); letter-spacing:.04em; }
+  .footer-logo span{ color:var(--lime); }
+  .footer-meta{ font-size:12px; color:rgba(255,255,255,.45); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="header-blob"></div>
+    <div class="header-blob2"></div>
+    <div class="cobrand">
+      <div class="flip-wordmark">Flip<span>CX</span></div>
+      <div class="x">&times;</div>
+      <div class="mfi-lockup">
+        <img src="https://www.google.com/s2/favicons?domain=mfimedical.com&sz=128" alt="MFI Medical" onerror="this.style.display='none'">
+        <div class="mfi-name"><b>MFI</b> <span>Medical</span></div>
+      </div>
+    </div>
+    <span class="eyebrow">Flip · Product Search QA</span>
+    <h1>MFI Medical<br><span>Product Search Testing</span></h1>
+    <p class="header-sub">A test of the new product search functionality for MFI Medical. We ran a range of products across the catalog through the live agent. Use "Next call" to cycle through each test call and see how the agent handled it.</p>
+  </div>
+
+  <div class="body-wrap">
+    <div class="panel">
+      <h2>Real test transcripts (live)</h2>
+      <div class="live-note">These are real call transcripts from a simulated call environment connected to MFI Medical's live store.</div>
+      <div class="controls-row">
+        <button id="nextCallBtn" type="button">Next call &rarr;</button>
+        <span id="callCounter" class="call-counter"></span>
+      </div>
+
+      <div class="example live">
+        <div class="call-title">Blood pressure cuff &amp; scalpels &mdash; multi-item order</div>
+        <div class="ts">6:11:08 PM</div><div class="bubble bot">"Good evening &mdash; thanks for calling m f i medical."</div>
+        <div class="ts">6:11:08 PM</div><div class="bubble bot">"One moment while I look up your account."</div>
+        <div class="ts">6:11:09 PM</div><div class="bubble bot">"You can check out our discounts page to save with our Deal of the Week coupon. Would you like me to text you a direct link for this promotion?"</div>
+        <div class="ts">6:11:09 PM</div><div class="bubble user">"Ok"</div>
+        <div class="ts">6:11:13 PM</div><div class="bubble bot">"I've sent that right over!"</div>
+        <div class="ts">6:11:16 PM</div><div class="bubble bot">"Who am I speaking with?"</div>
+        <div class="ts">6:11:17 PM</div><div class="bubble user">"Ian"</div>
+        <div class="ts">6:11:18 PM</div><div class="bubble bot">"Nice to meet you, Ian! What can I help you with today?"</div>
+        <div class="ts">6:11:20 PM</div><div class="bubble user">"I need a blood pressure cuff"</div>
+        <div class="ts">6:11:25 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">6:11:28 PM</div><div class="bubble bot">"I found several options for you! Here are a few top picks: the Welch Allyn FlexiPort Reusable Blood Pressure Cuff starting at twenty-four ninety-six, the Edan Blood Pressure Cuff at forty-two dollars, and the GE TONOPORT Blood Pressure Cuff starting at one eighty-nine seventy-eight. Do any of these interest you, or would you like more details on a specific one?"</div>
+        <div class="ts">6:11:33 PM</div><div class="bubble user">"the 24 dollar one"</div>
+        <div class="ts">6:11:56 PM</div><div class="bubble bot">"Let me pull up the details on that."</div>
+        <div class="ts">6:11:58 PM</div><div class="bubble bot">"That's the Welch Allyn FlexiPort Reusable Blood Pressure Cuff. It comes in several sizes &mdash; which size do you need? Options include Small Infant, Infant, Small Child, Child, Small Adult, Adult, Adult Long, Large Adult, Large Adult Long, and Thigh."</div>
+        <div class="ts">6:12:00 PM</div><div class="bubble user">"Adult is fine"</div>
+        <div class="ts">6:12:11 PM</div><div class="bubble bot">"Just to confirm, I'm adding the Welch Allyn FlexiPort Reusable Blood Pressure Cuff in Size-11 Adult with a cuff range of 25 to 34 cm for twenty-six ninety-one. Is that correct?"</div>
+        <div class="ts">6:12:13 PM</div><div class="bubble user">"Yeah"</div>
+        <div class="ts">6:12:17 PM</div><div class="bubble bot">"Added to your cart! Would you like to add anything else, or are you ready to check out?"</div>
+        <div class="ts">6:12:20 PM</div><div class="bubble user">"Do you have any scalpals?"</div>
+        <div class="ts">6:12:28 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">6:12:30 PM</div><div class="bubble bot">"We do! A few options: the Dynarex Medicut Disposable Scalpels starting at fifteen fifty-one, the Graham-Field Feather Safeshield Disposable Scalpel at thirty-three eighty-two, and the Sklar Sterile Disposable Scalpel at twenty-seven ninety-two. Which one interests you?"</div>
+        <div class="ts">6:12:35 PM</div><div class="bubble user">"lets get the cheapest one"</div>
+        <div class="ts">6:12:47 PM</div><div class="bubble bot">"Let me pull up the details on that."</div>
+        <div class="ts">6:12:49 PM</div><div class="bubble bot">"That's the Dynarex Medicut Disposable Scalpels, 10 per box. Which blade size do you need &mdash; number 10, 11, 12, 15, 20, 21, 22, or 23?"</div>
+        <div class="ts">6:12:51 PM</div><div class="bubble user">"15"</div>
+        <div class="ts">6:12:56 PM</div><div class="bubble bot">"Just to confirm, I'm adding the Dynarex Medicut Disposable Scalpels in size 15, 10 per box, for fifteen fifty-one. Is that correct?"</div>
+        <div class="ts">6:12:57 PM</div><div class="bubble user">"I need 10 of them"</div>
+        <div class="ts">6:13:02 PM</div><div class="bubble bot">"Just to confirm, I'm adding 10 boxes of the Dynarex Medicut Disposable Scalpels in size 15, that's 100 scalpels total, at fifteen fifty-one per box. Is that correct?"</div>
+        <div class="ts">6:13:06 PM</div><div class="bubble user">"Yup"</div>
+        <div class="ts">6:13:08 PM</div><div class="bubble bot">"Added! Your cart now has the blood pressure cuff and 10 boxes of scalpels, subtotal is one eighty-two oh one. Would you like to add anything else or ready to check out?"</div>
+        <div class="ts">6:13:11 PM</div><div class="bubble user">"No that should be it for now"</div>
+        <div class="ts">6:13:22 PM</div><div class="bubble bot">"Great! To get your order started, I'll need your shipping address. What's the full name and address you'd like this shipped to?"</div>
+        <div class="ts">6:13:24 PM</div><div class="bubble user">"Ian Masse 21820 Panama St, Playa Vista CA 90031"</div>
+        <div class="ts">6:13:40 PM</div><div class="bubble bot">"Here's your cart: one Welch Allyn FlexiPort Reusable Blood Pressure Cuff, Adult size, at twenty-six ninety-one, and 10 boxes of Dynarex Medicut Disposable Scalpels size 15 at fifteen fifty-one each, totaling one fifty-five ten. Subtotal is one eighty-two oh one, shipping to Ian Masse in Playa Vista, CA. Does everything sound correct?"</div>
+        <div class="ts">6:13:45 PM</div><div class="bubble user">"Yessir"</div>
+        <div class="ts">6:13:48 PM</div><div class="bubble bot">"I'm creating a secure checkout link now."</div>
+        <div class="ts">6:13:57 PM</div><div class="bubble bot">"Your total is one ninety-nine seventy-six &mdash; that's subtotal of one eighty-two oh one, tax of seventeen seventy-five, and free standard shipping. I can text the secure checkout link to the number you're calling from. Would you like me to send it?"</div>
+        <div class="ts">6:13:57 PM</div><div class="bubble user">"Yes please do"</div>
+        <div class="ts">6:14:03 PM</div><div class="bubble bot">"Text sent! Just open the link, confirm your info, and finish checking out. Did you need anything else?"</div>
+        <div class="ts">6:14:06 PM</div><div class="bubble user">"Nope thats all"</div>
+        <div class="ts">6:14:11 PM</div><div class="bubble bot">"Thanks for calling MFI Medical, Ian! Have a great day!"</div>
+      </div>
+
+      <div class="example live" style="display:none">
+        <div class="call-title">Luxor 2 Shelf Tub Cart &mdash; variant options &amp; stock check</div>
+        <div class="ts">6:00:22 PM</div><div class="bubble bot">"Good evening &mdash; thanks for calling m f i medical."</div>
+        <div class="ts">6:00:22 PM</div><div class="bubble bot">"One moment while I look up your account."</div>
+        <div class="ts">6:00:23 PM</div><div class="bubble bot">"You can check out our discounts page to save with our Deal of the Week coupon. Would you like me to text you a direct link for this promotion?"</div>
+        <div class="ts">6:00:29 PM</div><div class="bubble user">"No"</div>
+        <div class="ts">6:00:30 PM</div><div class="bubble bot">"No problem! Let me get your name &mdash; who am I speaking with?"</div>
+        <div class="ts">6:00:32 PM</div><div class="bubble bot">"Who am I speaking with?"</div>
+        <div class="ts">6:00:33 PM</div><div class="bubble user">"Ian"</div>
+        <div class="ts">6:00:34 PM</div><div class="bubble bot">"Nice to meet you, Ian! What can I help you with today?"</div>
+        <div class="ts">6:01:10 PM</div><div class="bubble user">"I'm interested in the Luxor 2 Shelf Tub Cart"</div>
+        <div class="ts">6:01:12 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">6:01:33 PM</div><div class="bubble bot">"I found the Luxor 2 Shelf Tub Cart &mdash; it comes in five variants ranging from one thirty-four oh three to two twenty-nine forty-seven. Which size and color are you looking for?"</div>
+        <div class="ts">6:01:45 PM</div><div class="bubble user">"what are the options"</div>
+        <div class="ts">6:01:49 PM</div><div class="bubble bot">"Here are the available options: Black at thirty-five and a quarter inches wide for one thirty-five seventy-two, Gray at the same width for one fifty-three fifteen, a smaller Black at twenty-four inches wide for one thirty-four oh three, a larger Black tub cart at thirty-two inches wide with locking brakes for one seventy, and a larger Gray with locking brakes for two twenty-nine forty-seven. Which one interests you?"</div>
+        <div class="ts">6:02:09 PM</div><div class="bubble user">"is the Black at thirty-five and a quarter inches in stock?"</div>
+        <div class="ts">6:02:10 PM</div><div class="bubble bot">"Yes, the Black at thirty-five and a quarter inches wide is in stock. Would you like to place an order for it?"</div>
+        <div class="ts">6:02:15 PM</div><div class="bubble user">"Yeah lets get it"</div>
+        <div class="ts">6:02:17 PM</div><div class="bubble bot">"Just to confirm, I'm adding the Luxor 2 Shelf Tub Cart in Black, thirty-five and a quarter inches wide, for one thirty-five seventy-two. Is that correct?"</div>
+        <div class="ts">6:02:42 PM</div><div class="bubble user">"Yes"</div>
+        <div class="ts">6:02:47 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">6:02:54 PM</div><div class="bubble bot">"Got it &mdash; the Luxor 2 Shelf Tub Cart in Black is in your cart for one thirty-five seventy-two. Would you like to add anything else, or shall we move to checkout?"</div>
+        <div class="ts">6:02:59 PM</div><div class="bubble user">"Let's checkout"</div>
+        <div class="ts">6:03:01 PM</div><div class="bubble bot">"I'll need your shipping address to get started. Could you provide your full name, street address, city, state, and zip code?"</div>
+        <div class="ts">6:03:50 PM</div><div class="bubble user">"Ian Masse, 21820 Panama St, Playa Vista, CA 90031"</div>
+        <div class="ts">6:03:55 PM</div><div class="bubble bot">"Your cart has one Luxor 2 Shelf Tub Cart in Black for one thirty-five seventy-two, shipping to Ian Masse in Playa Vista, CA. Does everything sound correct?"</div>
+        <div class="ts">6:04:03 PM</div><div class="bubble user">"Yup"</div>
+        <div class="ts">6:04:05 PM</div><div class="bubble bot">"I'll create a secure checkout link now."</div>
+        <div class="ts">6:04:12 PM</div><div class="bubble bot">"Your total is one forty-eight ninety-five &mdash; that's one thirty-five seventy-two for the cart, thirteen twenty-three in tax, and free standard shipping. Can I text the secure checkout link to the number you're calling from?"</div>
+        <div class="ts">6:04:20 PM</div><div class="bubble user">"Sure"</div>
+        <div class="ts">6:04:23 PM</div><div class="bubble bot">"The checkout link has been sent to your phone. Just open it, confirm your details, and complete the purchase. Did you need anything else?"</div>
+        <div class="ts">6:04:30 PM</div><div class="bubble user">"No thanks!"</div>
+        <div class="bubble bot">"Thanks for calling, Ian! Have a great day!"</div>
+      </div>
+
+      <div class="example live" style="display:none">
+        <div class="call-title">B. Braun Stimuplex HNS 12 Nerve Stimulator &mdash; licensed device</div>
+        <div class="ts">6:06:28 PM</div><div class="bubble bot">"Good evening &mdash; thanks for calling m f i medical."</div>
+        <div class="ts">6:06:28 PM</div><div class="bubble bot">"One moment while I look up your account."</div>
+        <div class="ts">6:06:29 PM</div><div class="bubble bot">"You can check out our discounts page to save with our Deal of the Week coupon. Would you like me to text you a direct link for this promotion?"</div>
+        <div class="ts">6:07:16 PM</div><div class="bubble user">"Ok"</div>
+        <div class="ts">6:07:17 PM</div><div class="bubble bot">"Great, let me text that to you now!"</div>
+        <div class="ts">6:07:19 PM</div><div class="bubble bot">"The text with the promotion link is on its way! Now, who am I speaking with?"</div>
+        <div class="ts">6:07:20 PM</div><div class="bubble bot">"Who am I speaking with?"</div>
+        <div class="ts">6:07:20 PM</div><div class="bubble user">"Ian"</div>
+        <div class="ts">6:07:22 PM</div><div class="bubble bot">"Nice to meet you, Ian! What can I help you with today?"</div>
+        <div class="ts">6:08:15 PM</div><div class="bubble user">"I wanna buy the HNS 12 Nerve Stimulator"</div>
+        <div class="ts">6:08:18 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">6:08:22 PM</div><div class="bubble bot">"I found the B. Braun Stimuplex HNS 12 Nerve Stimulator for thirteen thirteen eighty-eight. Let me pull up the full details for you."</div>
+        <div class="ts">6:08:25 PM</div><div class="bubble bot">"The B. Braun Stimuplex HNS 12 Nerve Stimulator is thirteen thirteen eighty-eight, factory new with a 2-year warranty and a 1-2 week lead time. Please note this device requires a medical license to purchase and cannot be shipped to a residential address. Would you like to add it to your cart?"</div>
+        <div class="ts">6:08:42 PM</div><div class="bubble user">"Yeah"</div>
+        <div class="ts">6:08:43 PM</div><div class="bubble bot">"Just to confirm, I'm adding the B. Braun Stimuplex HNS 12 Nerve Stimulator for thirteen thirteen eighty-eight. Is that correct?"</div>
+        <div class="ts">6:08:45 PM</div><div class="bubble user">"Yup"</div>
+        <div class="ts">6:08:49 PM</div><div class="bubble bot">"Got it, the HNS 12 Nerve Stimulator is in your cart. Would you like to add anything else?"</div>
+        <div class="ts">6:08:51 PM</div><div class="bubble user">"No"</div>
+        <div class="ts">6:08:53 PM</div><div class="bubble bot">"Great, let's get your shipping address so we can finalize your order. What's the full name and shipping address?"</div>
+        <div class="ts">6:09:10 PM</div><div class="bubble user">"Ian Masse 21820 Panama St, Playa Vista CA 90031"</div>
+        <div class="ts">6:09:12 PM</div><div class="bubble bot">"Just to confirm, that's Ian Masse, 21820 Panama Street, Playa Vista, California, 90031 &mdash; is that correct?"</div>
+        <div class="ts">6:09:14 PM</div><div class="bubble user">"Yes"</div>
+        <div class="ts">6:09:19 PM</div><div class="bubble bot">"Your cart has the B. Braun Stimuplex HNS 12 Nerve Stimulator at thirteen thirteen eighty-eight. Does everything sound correct?"</div>
+        <div class="ts">6:09:23 PM</div><div class="bubble user">"Yup"</div>
+        <div class="ts">6:09:25 PM</div><div class="bubble bot">"I'll create a secure checkout link for you now."</div>
+        <div class="ts">6:09:32 PM</div><div class="bubble bot">"Your total is fourteen forty-one ninety-eight &mdash; that's thirteen thirteen eighty-eight for the stimulator, one twenty-eight ten in tax, with free standard shipping. Would you like me to text the secure checkout link to this phone number?"</div>
+        <div class="ts">6:09:36 PM</div><div class="bubble user">"Yes please"</div>
+        <div class="ts">6:09:41 PM</div><div class="bubble bot">"The checkout link has been texted to you! Just open it, confirm your details, and complete checkout. Did you need anything else?"</div>
+        <div class="ts">6:09:44 PM</div><div class="bubble user">"No sir"</div>
+        <div class="bubble bot">"Thanks for calling, Ian! Have a great day!"</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">Flip<span>CX</span></div>
+    <div class="footer-meta">Product Search QA &middot; MFI Medical &middot; transcripts from a simulated call environment connected to MFI Medical's live store</div>
+  </div>
+</div>
+
+<script>
+const nextBtn = document.getElementById('nextCallBtn');
+const counterEl = document.getElementById('callCounter');
+const calls = document.querySelectorAll('.example.live');
+let currentIndex = 0;
+
+function showCall(){
+  calls.forEach((el, i) => { el.style.display = (i === currentIndex) ? '' : 'none'; });
+  if (calls.length > 1){
+    counterEl.textContent = `Call ${currentIndex + 1} of ${calls.length}`;
+    nextBtn.disabled = false;
+  } else if (calls.length === 1){
+    counterEl.textContent = `Call 1 of 1`;
+    nextBtn.disabled = true;
+  } else {
+    counterEl.textContent = '';
+    nextBtn.disabled = true;
+  }
+}
+
+nextBtn.addEventListener('click', () => {
+  if (calls.length === 0) return;
+  currentIndex = (currentIndex + 1) % calls.length;
+  showCall();
+});
+
+showCall();
+</script>
+</body>
+</html>
