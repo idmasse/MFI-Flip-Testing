@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MFI Medical · Product Search Testing</title>
+<title>MFI Medical · Product Search &amp; Order by Phone</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -75,9 +76,9 @@
         <div class="mfi-name"><b>MFI</b> <span>Medical</span></div>
       </div>
     </div>
-    <span class="eyebrow">Flip · Product Search QA</span>
-    <h1>MFI Medical<br><span>Product Search Testing</span></h1>
-    <p class="header-sub">A test of the new product search functionality for MFI Medical. We ran a range of products across the catalog through the live agent. Use "Next call" to cycle through each test call and see how the agent handled it.</p>
+    <span class="eyebrow">Flip · Product Search &amp; Order by Phone QA</span>
+    <h1>MFI Medical<br><span>Product Search &amp; Order by Phone</span></h1>
+    <p class="header-sub">A test of the new product search and order-by-phone functionality for MFI Medical. We ran a range of products across the catalog through the live agent &mdash; from search to add-to-cart to checkout. Use "Next call" to cycle through each test call and see how the agent handled it.</p>
   </div>
 
   <div class="body-wrap">
@@ -170,6 +171,14 @@
       </div>
 
       <div class="example live" style="display:none">
+        <div class="call-title">Snap-On Bar EMG Electrode T-Handle &mdash; product info lookup</div>
+        <div class="ts">4:08:38 PM</div><div class="bubble bot">"Nice to meet you, Ian! What can I help you with today?"</div>
+        <div class="ts">4:08:54 PM</div><div class="bubble user">"What can you tell me about the Snap-On Bar EMG Electrode T-Handle?"</div>
+        <div class="ts">4:08:55 PM</div><div class="bubble bot">"Let me search for that product for you."</div>
+        <div class="bubble bot">"The MFI Medical Snap-On Bar EMG Electrode T-Handle fits the Bar or Felt Pad Electrode and provides more flexibility and ease of use when changing or adjusting test sites. It's used for stimulation and NCV on EMG machines, is compatible with MFI Medical, Cadwell, Natus, TECA, Nicolet, and Xltek bar electrodes, and is made in the USA. It's priced at ten dollars and is currently in stock. Any other questions I can help you with?"</div>
+      </div>
+
+      <div class="example live" style="display:none">
         <div class="call-title">B. Braun Stimuplex HNS 12 Nerve Stimulator &mdash; licensed device</div>
         <div class="ts">6:06:28 PM</div><div class="bubble bot">"Good evening &mdash; thanks for calling m f i medical."</div>
         <div class="ts">6:06:28 PM</div><div class="bubble bot">"One moment while I look up your account."</div>
@@ -203,12 +212,65 @@
         <div class="bubble bot">"Thanks for calling, Ian! Have a great day!"</div>
       </div>
 
+      <div class="example live" style="display:none">
+        <div class="call-title">Philips HeartStart defibrillator pads &mdash; category drill-down</div>
+        <div class="ts">4:03:54 PM</div><div class="bubble bot">"Good afternoon &mdash; thanks for calling m f i medical."</div>
+        <div class="ts">4:03:54 PM</div><div class="bubble bot">"One moment while I look up your account."</div>
+        <div class="ts">4:03:55 PM</div><div class="bubble bot">"You can check out our discounts page to save with our Deal of the Week coupon. Would you like me to text you a direct link for this promotion?"</div>
+        <div class="ts">4:04:06 PM</div><div class="bubble user">"No"</div>
+        <div class="ts">4:04:08 PM</div><div class="bubble bot">"No problem! Who am I speaking with today?"</div>
+        <div class="ts">4:04:09 PM</div><div class="bubble bot">"Who am I speaking with?"</div>
+        <div class="ts">4:04:12 PM</div><div class="bubble user">"Ian"</div>
+        <div class="ts">4:04:14 PM</div><div class="bubble bot">"Nice to meet you, Ian! What can I help you with today?"</div>
+        <div class="ts">4:04:19 PM</div><div class="bubble user">"I need some electrode pads"</div>
+        <div class="ts">4:04:20 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">4:04:24 PM</div><div class="bubble bot">"I found several types of electrode pads. Could you narrow it down &mdash; are you looking for EMG surface electrodes, defibrillator pads, TENS stimulator pads, or something else?"</div>
+        <div class="ts">4:05:04 PM</div><div class="bubble user">"defib pads"</div>
+        <div class="ts">4:05:05 PM</div><div class="bubble bot">"Let me search for defibrillator pads for you."</div>
+        <div class="ts">4:05:09 PM</div><div class="bubble bot">"We have defibrillator pads from several brands including Zoll, Defibtech, Cardinal Health, and Philips. Do you have a specific brand or defibrillator model you need pads for?"</div>
+        <div class="ts">4:05:15 PM</div><div class="bubble user">"Philips"</div>
+        <div class="ts">4:05:16 PM</div><div class="bubble bot">"Let me search for that for you."</div>
+        <div class="ts">4:05:20 PM</div><div class="bubble bot">"I found two Philips HeartStart defibrillator pad options. The first is the Philips HeartStart Infant/Pediatric pads at ninety-nine eighty, and the second is the Philips HeartStart Adult/Pediatric SMART Pads II for the FRx AED at sixty-three ninety-eight. Which one are you looking for?"</div>
+        <div class="ts">4:05:34 PM</div><div class="bubble user">"i need the adult sized ones"</div>
+        <div class="ts">4:05:35 PM</div><div class="bubble bot">"Let me pull up the details on that."</div>
+        <div class="ts">4:05:37 PM</div><div class="bubble bot">"The Philips HeartStart Adult/Pediatric SMART Pads II are designed for the Philips HeartStart FRx AED and are priced at sixty-three ninety-eight. Lead time is two to three weeks. Would you like to add these to your cart?"</div>
+        <div class="ts">4:05:42 PM</div><div class="bubble user">"Yes"</div>
+        <div class="ts">4:05:44 PM</div><div class="bubble bot">"Just to confirm, I'm adding the Philips HeartStart Adult/Pediatric SMART Pads II for sixty-three ninety-eight. Is that correct?"</div>
+        <div class="ts">4:05:46 PM</div><div class="bubble user">"Yes"</div>
+        <div class="ts">4:05:49 PM</div><div class="bubble bot">"Added! Would you like to add anything else to your order?"</div>
+        <div class="ts">4:06:00 PM</div><div class="bubble user">"Thats it for now"</div>
+        <div class="ts">4:06:04 PM</div><div class="bubble bot">"Your cart has one Philips HeartStart Adult/Pediatric SMART Pads II at sixty-three ninety-eight, with a subtotal of sixty-three ninety-eight. Does everything sound correct?"</div>
+        <div class="ts">4:06:06 PM</div><div class="bubble user">"Yes"</div>
+        <div class="ts">4:06:08 PM</div><div class="bubble bot">"I'll need a shipping address to complete your order. Could you provide your full name and shipping address?"</div>
+        <div class="ts">4:06:24 PM</div><div class="bubble user">"12820 Panama St Playa Vista CA 90066"</div>
+        <div class="ts">4:06:26 PM</div><div class="bubble bot">"I have the address, but I'll also need your full name for the shipping label. What name should I use?"</div>
+        <div class="ts">4:06:34 PM</div><div class="bubble user">"Ian Masse"</div>
+        <div class="ts">4:06:37 PM</div><div class="bubble bot">"I'm creating a secure checkout link now."</div>
+        <div class="ts">4:06:44 PM</div><div class="bubble bot">"Your total is seventy dollars and twenty-two cents &mdash; that includes six twenty-four in tax with free shipping. Would you like me to text the secure checkout link to the number you're calling from?"</div>
+        <div class="ts">4:06:47 PM</div><div class="bubble user">"Yes thanks"</div>
+        <div class="ts">4:06:50 PM</div><div class="bubble bot">"The checkout link has been sent to your phone! Just open it, confirm your info, and finish checking out. Did you need anything else?"</div>
+        <div class="ts">4:06:52 PM</div><div class="bubble user">"Nope!"</div>
+        <div class="bubble bot">"Thanks for calling, Ian! Have a great day!"</div>
+      </div>
+
+      <div class="example live" style="display:none">
+        <div class="call-title">Xltek Brain Monitor EEG &amp; Sleep System &mdash; technical specs Q&amp;A</div>
+        <div class="ts">4:14:38 PM</div><div class="bubble bot">"Nice to meet you, Ian! What can I help you with today?"</div>
+        <div class="ts">4:14:41 PM</div><div class="bubble user">"how many input channels does the Xltek Brain Monitor EEG &amp; Sleep System have?"</div>
+        <div class="ts">4:14:42 PM</div><div class="bubble bot">"Let me search for that product information for you."</div>
+        <div class="ts">4:14:47 PM</div><div class="bubble bot">"The Xltek Brain Monitor EEG and Sleep System has 50 total input channels &mdash; 32 referential, 6 differential, 10 DC, and 2 sensor channels. Did you need anything else?"</div>
+        <div class="ts">4:15:01 PM</div><div class="bubble user">"Does it have a USB connector?"</div>
+        <div class="ts">4:15:03 PM</div><div class="bubble bot">"Yes, it has both USB 2.0 and Ethernet connectivity options. Did you need anything else?"</div>
+        <div class="ts">4:15:18 PM</div><div class="bubble user">"Can it use TCP/IP connectivity?"</div>
+        <div class="bubble bot">"Yes, it supports TCP/IP connectivity over Ethernet, so it can plug into your network and stream data to an acquisition computer. Did you need anything else?"</div>
+      </div>
+
     </div>
   </div>
 
   <div class="footer">
     <div class="footer-logo">Flip<span>CX</span></div>
-    <div class="footer-meta">Product Search QA &middot; MFI Medical &middot; transcripts from a simulated call environment connected to MFI Medical's live store</div>
+    <div class="footer-meta">Product Search &amp; Order by Phone QA &middot; MFI Medical &middot; transcripts from a simulated call environment connected to MFI Medical's live store</div>
   </div>
 </div>
 
